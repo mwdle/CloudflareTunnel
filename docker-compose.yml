@@ -1,0 +1,16 @@
+services:
+  CloudflareTunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: CloudflareTunnel
+    restart: unless-stopped
+    hostname: cloudflaretunnel
+    networks:
+      - CloudflareTunnel
+    command: tunnel run
+    environment:
+      - TUNNEL_TOKEN=${TUNNEL_TOKEN}
+# Assumes you have already created a Docker Network called 'CloudflareTunnel' (ex 'docker network create CloudflareTunnel'). See the README for more information.
+networks:
+  CloudflareTunnel:
+    name: CloudflareTunnel
+    external: true
