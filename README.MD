@@ -6,7 +6,7 @@ A sample Docker Compose file and brief guide for Cloudflare Zero Trust Tunnels.
 
 * The Docker Compose file assumes you have already created a Docker network called ```CloudflareTunnel``` that is already connected to any containers/services you wish to tunnel.  
   * You can create a network before starting the container by executing the following command: ```docker network create CloudflareTunnel```  
-* You must create a file called ```.env``` in the same directory as the ```docker-compose.yml``` that contains a key value pair ```TUNNEL_TOKEN=<YOUR_CLOUDFLARE_TUNNEL_TOKEN>  ```  
+* You must create a file called ```.env``` in the same directory as the ```docker-compose.yml``` that contains a key value pair ```TUNNEL_TOKEN=<YOUR_CLOUDFLARE_TUNNEL_TOKEN>```  
 
 ## Starting the container  
 
