@@ -18,7 +18,7 @@ Your container should be up and running and your Cloudflare Dashboard configured
 * You can attach other containers to this network by executing the following command: ```docker network connect CloudflareTunnel <CONTAINER_NAME>```  
   * After you start the container, this allows you to configure a tunnel with a service URL that is the name of the container you want to tunnel:  
       ![Cloudflare Dashboard Tunnel configuration](images/TunnelConfiguration.png)
-  * If using a reverse proxy, simply use the name of your reverse proxy container and add the HTTP Host Header like in the following example:  
+  * If using a reverse proxy, simply use the name of your reverse proxy container (after connecting it to the ```CloudflareTunnel``` Docker Network) and add the HTTP Host Header like in the following example:  
       ![Cloudflare Dashboard Tunnel configuration for reverse proxy](images/TunnelConfigurationReverseProxy.png)
 * No ports need are exposed to the host in ```docker-compose.yml``` because Cloudflare Tunnel connects to your services via Docker Networks.  
 
