@@ -1,6 +1,6 @@
 # Cloudflare Tunnel Docker Compose Configuration  
 
-A sample Docker Compose file for Cloudflare Zero Trust Tunnels.  
+A sample Docker Compose file and brief advice for Cloudflare Zero Trust Tunnels.  
 
 ## Important Details  
  
