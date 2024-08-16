@@ -11,16 +11,16 @@ A sample Docker Compose file and brief guide for Cloudflare Zero Trust Tunnels.
 ## Starting the container  
 
 In your terminal, ```cd``` to the directory containing the ```docker-compose.yml``` and ```.env``` files. Run the following command: ```docker compose up -d```  
-Your container should be up and running and your Cloudflare Dashboard configured tunnels should be live!  
+Your container should be up and running!  
 
-## Post Container Startup  
+## Post Container setup  
 
-* You can attach other containers to this network by executing the following command: ```docker network connect CloudflareTunnel <CONTAINER_NAME>```  
-  * After you start the container, this allows you to configure a tunnel with a service URL that is the name of the container you want to tunnel:  
-      ![Cloudflare Dashboard Tunnel configuration](images/TunnelConfiguration.png)
-  * If using a reverse proxy, simply use the name of your reverse proxy container (after connecting it to the ```CloudflareTunnel``` Docker Network) and add the HTTP Host Header like in the following example:  
-      ![Cloudflare Dashboard Tunnel configuration for reverse proxy](images/TunnelConfigurationReverseProxy.png)
-* No ports need are exposed to the host in ```docker-compose.yml``` because Cloudflare Tunnel connects to your services via Docker Networks.  
+* You can attach other containers to the CloudflareTunnel network you created earlier by executing the following command: ```docker network connect CloudflareTunnel <CONTAINER_NAME>```  
+  * This allows you to configure a tunnel with a service URL that is the name of the container you want to tunnel:  
+      ![Cloudflare Dashboard Tunnel configuration](images/TunnelConfiguration.png)  
+  * If using a reverse proxy, simply use the name of your reverse proxy container (after connecting it to the ```CloudflareTunnel``` Docker Network) and add the Origin Server Name, HTTP Host Header and HTTP/2 like in the following example:  
+      ![Cloudflare Dashboard Tunnel configuration for reverse proxy](images/TunnelConfigurationReverseProxy.png)  
+* No ports are exposed to the host in ```docker-compose.yml``` because Cloudflare Tunnel connects to your services via Docker Networks.  
 
 ### Disclaimer  
 
