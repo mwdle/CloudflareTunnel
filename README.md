@@ -2,26 +2,57 @@
 
 A sample Docker Compose file and brief guide for Cloudflare Zero Trust Tunnels.  
 
-## Important Details  
+## Table of Contents  
 
-* The Docker Compose file assumes you have already created a Docker network called ```CloudflareTunnel``` that is already connected to any containers/services you wish to tunnel.  
-  * You can create a network before starting the container by executing the following command: ```docker network create CloudflareTunnel```  
-* You must create a file called ```.env``` in the same directory as the ```docker-compose.yml``` that contains a key value pair ```TUNNEL_TOKEN=<YOUR_CLOUDFLARE_TUNNEL_TOKEN>```  
+* [Description](#cloudflare-tunnel-docker-compose-configuration)  
+* [Getting Started](#getting-started)  
+* [License](#license)  
+* [Disclaimer](#disclaimer)  
 
-## Starting the container  
+## Getting Started  
 
-In your terminal, ```cd``` to the directory containing the ```docker-compose.yml``` and ```.env``` files. Run the following command: ```docker compose up -d```  
-Your container should be up and running!  
+1. Clone the repository:  
 
-## Post Container setup  
+    ```shell
+    git clone https://github.com/mwdle/CloudflareTunnelConfig.git
+    ```  
 
-* You can attach other containers to the CloudflareTunnel network you created earlier by executing the following command: ```docker network connect CloudflareTunnel <CONTAINER_NAME>```  
-  * This allows you to configure a tunnel with a service URL that is the name of the container you want to tunnel:  
+2. Change the ```.env``` file tunnel token property to use your token:  
+
+    ```properties
+    TUNNEL_TOKEN=<YOUR_CLOUDFLARE_TUNNEL_TOKEN>
+    ```  
+
+3. Open a terminal in the directory containing the docker-compose file.  
+4. Create a docker network for the container:  
+
+    ```shell
+    docker network create CloudflareTunnel
+    ```  
+
+5. Start the container:  
+
+    ```shell
+    docker compose up -d
+    ```  
+
+6. Attach other containers to the CloudflareTunnel network you created earlier by executing the following:  
+
+    ```shell
+    docker network connect CloudflareTunnel <CONTAINER_NAME>
+    ```  
+
+7. Configure a tunnel with a service URL that is the name of the container you want to tunnel:  
       ![Cloudflare Dashboard Tunnel configuration](images/TunnelConfiguration.png)  
-  * If using a reverse proxy, simply use the name of your reverse proxy container (after connecting it to the ```CloudflareTunnel``` Docker Network) and add the Origin Server Name, HTTP Host Header and HTTP/2 like in the following example:  
+8. If using a reverse proxy, simply use the name of your reverse proxy container, add the Origin Server Name, HTTP Host Header and HTTP/2 like in the following example:  
       ![Cloudflare Dashboard Tunnel configuration for reverse proxy](images/TunnelConfigurationReverseProxy.png)  
-* No ports are exposed to the host in ```docker-compose.yml``` because Cloudflare Tunnel connects to your services via Docker Networks.  
 
-### Disclaimer  
+Your container should be up and running and your tunnels should be accessible according to your configuration.  
+
+## License  
+
+This project is licensed under the GNU General Public License v3.0 (GPL-3.0). See the [LICENSE](LICENSE.txt) file for details.  
+
+## Disclaimer  
 
 This repository is provided as-is and is intended for informational and reference purposes only. The author assumes no responsibility for any errors or omissions in the content or for any consequences that may arise from the use of the information provided. Always exercise caution and seek professional advice if necessary.  
