@@ -47,7 +47,7 @@ A sample Docker Compose file and brief guide for Cloudflare Zero Trust Tunnels.
 8. If using a reverse proxy, simply use the name of your reverse proxy container, add the Origin Server Name, HTTP Host Header and HTTP/2 like in the following example:  
       ![Cloudflare Dashboard Tunnel configuration for reverse proxy](images/TunnelConfigurationReverseProxy.png)  
 
-Your container should be up and running and your tunnels should be accessible according to your configuration.  
+Your container should be up and running and your tunnels should be accessible according to your configuration. Attach your reverse proxy container to the previously created Docker Network and configure it accordingly.  
 
 ## License  
 
